@@ -2,7 +2,6 @@ from sqlalchemy import Column, String, Integer, Boolean, Float, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 Base = declarative_base()
-
 class Usuario(Base):
     __tablename__ = 'usuarios'
     

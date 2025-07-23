@@ -1,7 +1,9 @@
 from sqlalchemy import Column, String, Integer, Boolean, Float, ForeignKey
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base , DeclarativeBase
+
 
 Base = declarative_base()
+
 
 class Jogo(Base):
     __tablename__ = 'jogos'

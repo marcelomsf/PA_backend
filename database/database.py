@@ -6,15 +6,20 @@ Base = declarative_base()
 
 
 
+
+
+
+
+
+
 settings = get_settings()
 
 username = settings.ORACLE_DB_USERNAME
 password = settings.ORACLE_DB_PASSWORD
 dsn = settings.ORACLE_DB_DSN
 
-
-engine = create_engine(f"oracle+oracledb://{username}:{password}@{dsn}")
-
+#engine = create_engine(f"oracle+oracledb://{username}:{password}@{dsn}")
+engine = create_engine("sqlite:///banco.db")
 
 
 def get_db():

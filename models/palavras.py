@@ -3,6 +3,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 
 Base = declarative_base()
 
+
 class Palavra(Base):
     __tablename__ = 'palavras'
     
