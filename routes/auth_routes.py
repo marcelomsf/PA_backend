@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 
 auth_router = APIRouter(prefix="/auth", tags=["auth"])
 
-@auth_router.get("/auth")
+@auth_router.get("/")
 async def auth():
     """_summary_
     Esssa é a rota de autenticação.
@@ -11,7 +11,7 @@ async def auth():
     """
     return {"message": "Authentication endpoint"}
 
-@auth_router.post("/auth/singup")
+@auth_router.post("/singup")
 async def singup():
     """_summary_
     Esssa é a rota de singup.
@@ -20,7 +20,7 @@ async def singup():
     """
     return {"message": "singup endpoint"}
 
-@auth_router.post("/auth/login")
+@auth_router.post("/login")
 async def login():
     """_summary_
     Esssa é a rota de login.
@@ -29,7 +29,7 @@ async def login():
     """
     return {"message": "login endpoint"}
 
-@auth_router.get("/auth/refresh")
+@auth_router.get("/refresh")
 async def refresh():
     """_summary_
     Esssa é a rota de refresh.

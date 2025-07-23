@@ -3,7 +3,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 
 user_router = APIRouter(prefix="/users", tags=["users"])
 
-@user_router.get("/users")
+@user_router.get("/")
 async def read_users():
     """_summary_
     Esssa é a rota de listar todos os usuários.
@@ -12,7 +12,7 @@ async def read_users():
     """
     
     return {"message": "List of users"}
-@user_router.get("/users/{user_id}")
+@user_router.get("/{user_id}")
 async def read_user():
     """_summary_
     Esssa é a rota de informaçao do usuário.

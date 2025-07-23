@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Integer, Boolean, Float, ForeignKey
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
