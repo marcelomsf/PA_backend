@@ -1,4 +1,5 @@
 from sqlalchemy import create_engine
+from sqlalchemy import Column, String, Integer, Boolean, Float, ForeignKey, DateTime
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 
