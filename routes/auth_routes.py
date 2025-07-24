@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from models.db import Usuario 
 from utils.dependencies import get_session
+from main import bcrypt_context
 
 auth_router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -26,7 +27,8 @@ async def singup(username : str, name: str, senha : str, email: str, session = D
         # ja existe um usuario com esse email
         return {"mensagem" : "Já existe um usuário cadastrado"}
     else:
-        novo_usuario = Usuario( username, name, email, senha)
+        senha_segura = bcrypt_context.hash(senha)
+        novo_usuario = Usuario( username, name, email, senha_segura)
         session.add(novo_usuario)
         session.commit()
         return {"mensagem" : "usuário cadastrado com sucesso"}

@@ -1,6 +1,17 @@
 from fastapi import FastAPI, HTTPException
+from passlib.context import CryptContext
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+
 
 app = FastAPI()
+
+
+bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated ="auto")
+
 # uvicorn main:app --reload
 from routes.auth_routes import auth_router
 from routes.user_routes import user_router
