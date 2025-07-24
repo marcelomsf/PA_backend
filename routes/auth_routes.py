@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
-from models.db import Usuario , db
-from sqlalchemy.orm import sessionmaker
+from models.db import Usuario 
+from utils.dependencies import get_session
 
 auth_router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -14,14 +14,12 @@ async def auth():
     return {"message": "Authentication endpoint"}
 
 @auth_router.post("/singup")
-async def singup(username : str, name: str, senha : str, email: str):
+async def singup(username : str, name: str, senha : str, email: str, session = Depends(get_session)):
     """_summary
     Esssa é a rota de singup.
     Returns:
         _type_: _description_
     """
-    Session = sessionmaker(bind=db)
-    session = Session()
     usuario = session.query(Usuario).filter(Usuario.username == username).first()
     
     if usuario:
