@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from passlib.context import CryptContext
+from fastapi.security import OAuth2PasswordBearer
 from dotenv import load_dotenv
 import os
 load_dotenv()
@@ -12,6 +13,7 @@ app = FastAPI()
 
 
 bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated ="auto")
+oauth2_schema = OAuth2PasswordBearer(tokenUrl="auth/login")
 
 # uvicorn main:app --reload
 from routes.auth_routes import auth_router
