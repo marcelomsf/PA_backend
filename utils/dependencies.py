@@ -18,7 +18,8 @@ def verificar_token(token: str = Depends(oauth2_schema), session: Session = Depe
     try:        
         dic_info = jwt.decode(token, SECRET_KEY, ALGORITHM)
         username = dic_info.get("sub")
-    except JWTError:
+    except JWTError as error:
+        print(error)
         raise HTTPException (status_code=401, detail="Acesso negado")
     usuario = session.query(Usuario).filter(Usuario.username == username ).first()
     if not usuario:

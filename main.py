@@ -13,7 +13,7 @@ app = FastAPI()
 
 
 bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated ="auto")
-oauth2_schema = OAuth2PasswordBearer(tokenUrl="auth/login")
+oauth2_schema = OAuth2PasswordBearer(tokenUrl="auth/login-form")
 
 # uvicorn main:app --reload
 from routes.auth_routes import auth_router
