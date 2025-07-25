@@ -13,3 +13,20 @@ class UsuarioSchema(BaseModel):
     class Config:
         from_attributes = True
     
+class JogoSchema(BaseModel):
+    id_usuario : int
+    palavra: str
+    tentativas: int
+    acerto : bool
+    pontos: Optional[float]
+    
+    class Config:
+        from_attributes = True
+    
+
+class LoginScheme(BaseModel):
+    username: str
+    hashed_password: str
+
+    class Config:
+        from_attributes = True
