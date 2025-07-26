@@ -45,14 +45,14 @@ async def singup(usuario_schema: UsuarioSchema, session: Session = Depends(get_s
     Returns:
         _type_: _description_
     """
-    usuario = session.query(Usuario).filter(Usuario.username == usuario_schema.nome).first()
+    usuario = session.query(Usuario).filter(Usuario.username == usuario_schema.username).first()
     
     if usuario:
         # ja existe um usuario com esse email
         raise  HTTPException ( status_code=400 , detail ="Já existe um usuário cadastrado")
     else:
         senha_segura = bcrypt_context.hash(usuario_schema.senha)
-        novo_usuario = Usuario( usuario_schema.username, usuario_schema.name, usuario_schema.email, usuario_schema.senha_segura, usuario_schema.ativo. usuario_schema.admin)
+        novo_usuario = Usuario( usuario_schema.username, usuario_schema.nome, usuario_schema.email, senha_segura, usuario_schema.ativo, usuario_schema.admin)
         session.add(novo_usuario)
         session.commit()
         return HTTPException ( status_code=200 , detail ="usuário cadastrado com sucesso")

@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
-from utils.dependencies import get_session
+from utils.dependencies import get_session , verificar_token
 from sqlalchemy.orm import Session
 from models.schemas import JogoSchema
 from models.db import Jogo
 
-game_router = APIRouter(prefix="/games", tags=["games"])
+game_router = APIRouter(prefix="/games", tags=["games"] , dependencies=[Depends(verificar_token)])
 
 @game_router.get("/")
 async def read_games():
