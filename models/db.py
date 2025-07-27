@@ -31,9 +31,9 @@ class Palavra(Base):
     
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     palavra = Column(String, unique=True, index=True, nullable=False)
-    data = Column(DateTime, nullable=False)
+    data = Column(DateTime)
     
-def __init__(self, palavra: str, data: DateTime):
+    def __init__(self, palavra: str, data: DateTime):
         self.palavra = palavra
         self.data = data
         

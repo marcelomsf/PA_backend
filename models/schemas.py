@@ -1,3 +1,4 @@
+from datetime import date, datetime, time , timedelta
 from pydantic import BaseModel
 from typing import Optional
 
@@ -28,5 +29,13 @@ class LoginScheme(BaseModel):
     username: str
     hashed_password: str
 
+    class Config:
+        from_attributes = True
+        
+        
+class PalavraSchema(BaseModel):
+    palavra: str
+    data : datetime
+    
     class Config:
         from_attributes = True
